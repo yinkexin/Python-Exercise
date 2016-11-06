@@ -1,0 +1,21 @@
+import json
+from twitter import Twitter, OAuth
+
+
+# Set consumer acess key and secret
+ACCESS_TOKEN = '788202738777722880-DkBAT1PO7ySjBE3g6Q5szP2TKlrRks3'
+ACCESS_SECRET = '0DViWxIASjwBCORuKb9iiOBswuP7v8Z66NpodCxgTGdt7'
+CONSUMER_KEY = 'dgaq5MKy8mObHM69t3rjOhjo3'
+CONSUMER_SECRET = 'kG6U2EIqBI2GfChEqfsxg1KJivW9zI4eeEDqEPDVYcJF5XU3Hg'
+
+# Set oauth
+oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
+twitter = Twitter(auth=oauth)
+
+file = open ("twitter_REST_test.json","w")
+
+# Return dict data
+data = twitter.search.tweets(q='chase sapphire reserve', until='2016-11-06', count='100')
+
+# Transform dict data into json format and write into file "twitter_REST_test.json"  
+json.dump(data, file)
